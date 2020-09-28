@@ -1,0 +1,26 @@
+[
+  {
+    "model": "simulatorAPI.simulationResult",
+    "pk": 1,
+    "fields": {
+      "maxPortfolio": 683456.45,
+      "minPortfolio": 78546.94
+    }
+  },
+  {
+    "model": "simulatorAPI.simulationResult",
+    "pk": 2,
+    "fields": {
+      "maxPortfolio": 563284.45,
+      "minPortfolio": 78943.00
+    }
+  },
+  {
+    "model": "simulatorAPI.simulationResult",
+    "pk": 3,
+    "fields": {
+      "maxPortfolio": 345263.00,
+      "minPortfolio": 89354.23
+    }
+  }
+]

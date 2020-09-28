@@ -1,0 +1,11 @@
+POST "localhost:8000/graphql"
+Content-Type: application/graphql
+X-REQUEST-TYPE: GraphQL
+
+query {
+    allConfigurations {
+        principal
+        numOfTrades
+        numOfSimulations
+    }
+}

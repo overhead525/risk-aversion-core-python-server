@@ -1,0 +1,44 @@
+[
+  {
+    "model": "simulatorAPI.configuration",
+    "pk": 1,
+    "fields": {
+      "principal": 100000,
+      "riskDecimal": 0.01,
+      "rewardDecimal": 0.05,
+      "winDecimal": 0.45,
+      "lossDecimal": 0.55,
+      "breakEvenDecimal": 0.25,
+      "numOfTrades": 50,
+      "numOfSimulations": 100
+    }
+  },
+  {
+    "model": "simulatorAPI.configuration",
+    "pk": 2,
+    "fields": {
+      "principal": 70000,
+      "riskDecimal": 0.03,
+      "rewardDecimal": 0.10,
+      "winDecimal": 0.35,
+      "lossDecimal": 0.65,
+      "breakEvenDecimal": 0.231,
+      "numOfTrades": 30,
+      "numOfSimulations": 10000
+    }
+  },
+  {
+    "model": "simulatorAPI.configuration",
+    "pk": 3,
+    "fields": {
+      "principal": 3000,
+      "riskDecimal": 0.01,
+      "rewardDecimal": 0.03,
+      "winDecimal": 0.45,
+      "lossDecimal": 0.55,
+      "breakEvenDecimal": 0.25,
+      "numOfTrades": 30,
+      "numOfSimulations": 100000
+    }
+  }
+]
