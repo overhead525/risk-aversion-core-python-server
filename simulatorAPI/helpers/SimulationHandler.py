@@ -6,7 +6,6 @@ import subprocess
 from ..models import SimulationResult, Configuration
 
 coreFile = f'{os.getcwd()}\\simulatorAPI\\executables\\forex_profit_calc_cpp.exe'
-print(f'coreFile is equal to : {coreFile}')
 output = "./simulationResult.json"
 
 
@@ -33,7 +32,6 @@ def executeSimulation(
     simConfig.numOfTrades = numOfSimulations
     simConfig.numOfSimulations = numOfSimulations
 
-    print(f'trying to run {coreFile}')
     subprocess.run([
         f'{coreFile}',
         str(principal),
