@@ -5,7 +5,7 @@ import subprocess
 
 from ..models import SimulationResult, Configuration
 
-coreFile = f'{os.getcwd()}\\simulatorAPI\\executables\\forex_profit_calc_cpp.exe'
+coreFile = f'{os.getcwd()}/simulatorAPI/executables/forex_profit_calc_cpp.exe'
 output = "./simulationResult.json"
 
 
