@@ -1,8 +1,9 @@
 import asyncio
 import graphene
 from graphene_django import DjangoObjectType
+from django.db.models import QuerySet
 
-from .models import SimulationResult
+from .models import SimulationResult, Configuration
 
 from .helpers.SimulationHandler import executeSimulation
 
@@ -61,5 +62,22 @@ class SimulationMutation(graphene.Mutation):
         return SimulationMutation(result=result)
 
 
+class DeleteSimulation(graphene.Mutation):
+    class Arguments:
+        simID = graphene.String()
+
+    ok = graphene.Boolean()
+
+    def mutate(self, info, simID):
+        simulationResultDeletion = SimulationResult.objects.filter(simID=simID).delete()
+        configurationDeletion = Configuration.objects.filter(simID=simID).delete()
+        if simulationResultDeletion[0] > 0 and configurationDeletion[0] > 0:
+            ok = True
+        else:
+            ok = False
+        return DeleteSimulation(ok=ok)
+
+
 class Mutation(graphene.ObjectType):
     simulate = SimulationMutation.Field()
+    deleteSimulation = DeleteSimulation.Field()
