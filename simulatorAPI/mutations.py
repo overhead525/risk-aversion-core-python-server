@@ -2,6 +2,7 @@ import asyncio
 import graphene
 from graphene_django import DjangoObjectType
 from django.db.models import QuerySet
+from typing import List
 
 from .models import SimulationResult, Configuration
 
@@ -62,7 +63,7 @@ class SimulationMutation(graphene.Mutation):
         return SimulationMutation(result=result)
 
 
-class DeleteSimulation(graphene.Mutation):
+class DeleteSingleSimulation(graphene.Mutation):
     class Arguments:
         simID = graphene.String()
 
@@ -75,9 +76,28 @@ class DeleteSimulation(graphene.Mutation):
             ok = True
         else:
             ok = False
-        return DeleteSimulation(ok=ok)
+        return DeleteSingleSimulation(ok=ok)
+
+
+class DeleteMultipleSimulations(graphene.Mutation):
+    class Arguments:
+        simIDs = graphene.List(graphene.String)
+
+    ok = graphene.List(graphene.Boolean)
+
+    def mutate(self, info, simIDs: List[str]):
+        ok = []
+        for simID in simIDs:
+            simulationResultDeletion = SimulationResult.objects.filter(simID=simID).delete()
+            configurationDeletion = Configuration.objects.filter(simID=simID).delete()
+            if simulationResultDeletion[0] > 0 and configurationDeletion[0] > 0:
+                ok.append(True)
+            else:
+                ok.append(False)
+        return DeleteMultipleSimulations(ok=ok)
 
 
 class Mutation(graphene.ObjectType):
     simulate = SimulationMutation.Field()
-    deleteSimulation = DeleteSimulation.Field()
+    deleteSingleSimulation = DeleteSingleSimulation.Field()
+    deleteMultipleSimulations = DeleteMultipleSimulations.Field()
