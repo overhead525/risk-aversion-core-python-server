@@ -11,14 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-<<<<<<< HEAD
 import django_heroku
 import os
 import logging.config
-=======
 from dotenv import load_dotenv
-import os
->>>>>>> 0e0ba3fa01ac734c07656e38a92b3c4071e0569c
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
